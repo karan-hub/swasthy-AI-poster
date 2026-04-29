@@ -7,6 +7,7 @@
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -386,9 +387,9 @@
                         <div class="stat-box"><div class="stat-number">85%</div><div>Offline Cache Hit Rate</div></div>
                         <div class="stat-box"><div class="stat-number">2.1s</div><div>Avg Response (300 users)</div></div>
                     </div>
-                    <div class="text-sm"><i class="fas fa-check-circle"></i> Validated via manual & automated testing (JUnit, Appium, JMeter). User acceptance passed for all modules.</div>
+                    <div class="text-sm" style="margin-top: 30px;"><i class="fas fa-check-circle"></i> Validated via manual & automated testing (JUnit, Appium, JMeter). User acceptance passed for all modules.</div>
                     <hr>
-                    <div class="text-sm"><strong>✅ Sample Output (Chat)</strong> — “Warm ginger water for stomach pain, triphala for digestion, and lifestyle tips based on dosha.”</div>
+                    <div class="text-sm" style="margin-top: 30px;"><strong>✅ Sample Output (Chat)</strong> — “Warm ginger water for stomach pain, triphala for digestion, and lifestyle tips based on dosha.”</div>
                 </div>
             </div>
             
@@ -428,8 +429,8 @@
                 <div  style="display: flex ;  align-items: center;">
                     <div class="section-card"  id="sys" >
                     <div class="section-title"><i class="fas fa-project-diagram"></i> System Architecture</div>                    
-                    <p class="text-sm" style="line-height: 10px;" >The architecture captures the mobile app flow through the API gateway into auth, AI, chat, voice.</p>
-                    <p class="text-sm"  style="line-height: 10px;">User data is managed in PostgreSQL, knowledge assets in MongoDB, and fast state in Redis.</p>
+                    <p class="text-sm"  >The architecture captures the mobile app flow through the API gateway into auth, AI, chat, voice.</p>
+                    <p class="text-sm" >User data is managed in PostgreSQL, knowledge assets in MongoDB, and fast state in Redis.</p>
                       <div class="arch-diagram">
                         <img src="System Architecture.png" alt="System architecture diagram">
                         <div class="image-caption">System flow for API, auth, AI service, chat, voice, scheduler and data stores.</div>
