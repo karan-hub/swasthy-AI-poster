@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Swasthya AI - A2 Poster | AI Ayurvedic Health Assistant</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+
+        body {
+            background: #e6f0ea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* A2 size simulation: clean, print-friendly, minimal layout */
+        .poster {
+            width: 420mm;
+            max-width: 100%;
+           
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        /* content padding */
+        .poster-inner {
+            padding: 1.4rem 1.6rem;
+        }
+
+        /* header */
+        .title-section {
+            text-align: center;
+            margin-bottom: 1.8rem;
+            border-bottom: 3px solid #2c7a47;
+            padding-bottom: 1rem;
+        }
+        .main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1F4F2B, #2c7a47);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.4rem;
+        }
+        .subhead {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2c5e3a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .subhead span {
+            background: #eef5e9;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+        }
+
+        /* grid layout: two columns for most content */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* card style for each section */
+        .section-card {
+            background: #fefef7;
+            border-radius: 24px;
+            padding: 1rem 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border: 1px solid #e8f0e8;
+            transition: all 0.1s;
+        }
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1a472a;
+            border-left: 5px solid #2c7a47;
+            padding-left: 12px;
+            margin-bottom: 1rem;
+        }
+        .section-title i {
+            color: #2c7a47;
+            font-size: 1.3rem;
+        }
+        .text-sm {
+            font-size: 0.88rem;
+            line-height: 1.45;
+            color: #2d3e2f;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .bullet-list li {
+            margin-bottom: 8px;
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+        }
+        .bullet-list li i {
+            color: #2c7a47;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            min-width: 18px;
+        }
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .badge {
+            background: #eef2ec;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1e3a2f;
+        }
+        .arch-diagram {
+            background: #fbfaf5;
+            border-radius: 16px;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            border: 1px solid #e0e8e0;
+        }
+        .arch-diagram img {
+            width: 100%;
+            border-radius: 14px;
+            display: block;
+            max-height: 320px;
+            object-fit: contain;
+        }
+        .image-caption {
+            padding: 8px 10px;
+            text-align: center;
+            color: #4f6b54;
+            font-size: 0.78rem;
+            background: #f9fbf6;
+        }
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .image-card {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #e4ece2;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+            background: #ffffff;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+        }
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            flex: 1 1 auto;
+        }
+        .image-card .image-caption {
+            background: #f9fbf6;
+            font-size: 0.78rem;
+            padding: 8px 10px;
+            color: #4f6b54;
+            margin: 0;
+        }
+        .arch-grid,
+        .arch-node,
+        .arch-arrow {
+            display: none;
+        }
+        .text-sm {
+            font-size: 0.88rem;
+            line-height: 1.45;
+            color: #2d3e2f;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .bullet-list li {
+            margin-bottom: 8px;
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+        }
+        .bullet-list li i {
+            color: #2c7a47;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            min-width: 18px;
+        }
+        .chat-bubble {
+            background: #e5f0e2;
+            border-radius: 14px;
+            padding: 6px;
+            font-size: 0.65rem;
+            margin-top: 6px;
+        }
+        .metric-highlight {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 10px 0;
+        }
+        .stat-box {
+            background: #eef3ea;
+            border-radius: 20px;
+            padding: 8px;
+            text-align: center;
+            flex: 1;
+        }
+        .stat-number {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #2c7a47;
+        }
+        hr {
+            margin: 12px 0;
+            border-color: #dfe8db;
+        }
+        .footer-team {
+            background: #f2f7ef;
+            border-radius: 24px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .team-names {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #2c5e3a;
+            font-weight: 500;
+        }
+        .btn-export {
+            background: #2c7a47;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 60px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+            margin-bottom: 20px;
+            border: none;
+        }
+        .btn-export:hover {
+            background: #1f5f38;
+            transform: scale(1.01);
+        }
+        .full-width {
+            grid-column: span 2;
+        }
+        @media (max-width: 900px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .screenshot-grid {
+                grid-template-columns: repeat(2, minmax(160px, 1fr));
+                gap: 12px;
+            }
+            .image-card img {
+                height: 220px;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+            .poster-inner {
+                padding: 1.2rem;
+            }
+            .main-title {
+                font-size: 2.2rem;
+            }
+        }
+        .caption-mini {
+            font-size: 0.7rem;
+            color: #5b7a5a;
+            text-align: center;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="poster" id="posterContainer">
+    <div class="poster-inner">
+        <!-- TITLE SECTION -->
+        <div class="title-section">
+            <h1 class="main-title">🌿 Swasthya AI</h1>
+            <div class="subhead">
+                <span>AI-Based Ayurvedic Health Assistant</span>
+                <span>✨ Dosha Detection · RAG Remedies · Voice Assistant</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.75rem; color: #4a6741;">B.E. Computer Engineering | Indira College of Engineering & Management, Pune</div>
+        </div>
+
+        <div class="two-columns">
+            <!-- LEFT COLUMN -->
+            <div>
+                <!-- Abstract -->
+                <div class="section-card">
+                    <div class="section-title"><i class="fas fa-leaf"></i> Abstract</div>
+                    <p class="text-sm">Swasthya AI blends traditional Ayurveda with AI/ML, providing personalized wellness solutions. It analyzes symptoms, dosha imbalances (Vata/Pitta/Kapha), and lifestyle factors using NLP & RAG. Features include multilingual voice, offline caching, remedy suggestions, and Vaidya connect. Achieves 89% dosha detection accuracy and 91.4% speech recognition in regional languages.</p>
+                </div>
+                <!-- Problem Statement & Objectives combined -->
+                <div class="section-card">
+                    <div class="section-title"><i class="fas fa-bullseye"></i> Problem Statement</div>
+                    <p class="text-sm">Existing health apps lack authentic, personalized Ayurvedic guidance, ignore individual dosha types, language barriers, and offline usage. Swasthya AI bridges that gap via intelligent NLP + AI and verified Ayurvedic knowledge.</p>
+                    <div style="margin-top: 12px;"><span class="section-title" style="font-size: 1.1rem; border-left: none; padding-left: 0;"><i class="fas fa-check-circle"></i> Objectives</span></div>
+                    <ul class="bullet-list text-sm">
+                        <li><i class="fas fa-seedling"></i> Understand Ayurveda & rural health needs</li>
+                        <li><i class="fas fa-microphone-alt"></i> Implement AI-powered symptom analysis & dosha detection</li>
+                        <li><i class="fas fa-language"></i> Multilingual voice + offline functionality</li>
+                        <li><i class="fas fa-chart-line"></i> Test for accuracy (89% dosha), safety & usability</li>
+                    </ul>
+                </div>
+                <!-- Dataset Used -->
+                <div class="section-card">
+                    <div class="section-title"><i class="fas fa-database"></i> Dataset Used</div>
+                    <ul class="bullet-list text-sm">
+                        <li><i class="fas fa-book-open"></i> Classical Ayurvedic texts (Charaka Samhita, Sushruta)</li>
+                        <li><i class="fas fa-notes-medical"></i> Verified herbal formulation & remedy repository</li>
+                        <li><i class="fas fa-chart-simple"></i> Symptom–Dosha labeled dataset (500+ patient profiles)</li>
+                        <li><i class="fas fa-vector-square"></i> Vector embeddings for RAG retrieval (custom knowledge base)</li>
+                    </ul>
+                </div>
+                <!-- Methodology -->
+                <div class="section-card">
+                    <div class="section-title"><i class="fas fa-cogs"></i> Methodology</div>
+                    <ul class="bullet-list text-sm">
+                        <li><i class="fas fa-voice"></i> Symptom collection (text/voice + STT)</li>
+                        <li><i class="fas fa-brain"></i> NLP processing + LLM-based dosha classification</li>
+                        <li><i class="fas fa-search"></i> RAG (Retrieval-Augmented Generation) for remedy matching</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Geolocation → Vaidya connect / expert consultation</li>
+                        <li><i class="fas fa-bell"></i> Reminders & offline-first caching (85% cache hit)</li>
+                    </ul>
+                </div>
+                <!-- Results & Output -->
+                <div class="section-card">
+                    <div class="section-title"><i class="fas fa-chart-simple"></i> Results & Output</div>
+                    <div class="metric-highlight">
+                        <div class="stat-box"><div class="stat-number">89%</div><div>Dosha Detection Accuracy</div></div>
+                        <div class="stat-box"><div class="stat-number">91.4%</div><div>Voice Recognition (5 languages)</div></div>
+                        <div class="stat-box"><div class="stat-number">4.3/5</div><div>Expert Remedy Relevance</div></div>
+                    </div>
+                    <div class="metric-highlight">
+                        <div class="stat-box"><div class="stat-number">0%</div><div>Error Rate @300 concurrent users</div></div>
+                        <div class="stat-box"><div class="stat-number">85%</div><div>Offline Cache Hit Rate</div></div>
+                        <div class="stat-box"><div class="stat-number">2.1s</div><div>Avg Response (300 users)</div></div>
+                    </div>
+                    <div class="text-sm"><i class="fas fa-check-circle"></i> Validated via manual & automated testing (JUnit, Appium, JMeter). User acceptance passed for all modules.</div>
+                    <hr>
+                    <div class="text-sm"><strong>✅ Sample Output (Chat)</strong> — “Warm ginger water for stomach pain, triphala for digestion, and lifestyle tips based on dosha.”</div>
+                </div>
+            </div>
+            
+
+            <!-- RIGHT COLUMN -->
+            <div>
+                <!-- Implementation Details: Modules & Tools -->
+                <div class="section-card">
+                    <div class="section-title"><i class="fas fa-code-branch"></i> Implementation Details</div>
+                    <div><span style="font-weight: 700;">Modules:</span> Symptom Intake, Dosha Detection Engine, RAG Remedy Generator, Voice Interface, Vaidya Connect, Reminders, Offline Cache.</div>
+                    <div class="badge-group">
+                        <span class="badge"><i class="fab fa-react"></i> React Native</span>
+                        <span class="badge"><i class="fab fa-java"></i> Spring Boot</span>
+                        <span class="badge"><i class="fas fa-database"></i> MongoDB + Vector DB</span>
+                        <span class="badge"><i class="fas fa-microphone"></i> STT/TTS APIs</span>
+                        <span class="badge"><i class="fas fa-robot"></i> LLM + RAG</span>
+                        <span class="badge"><i class="fas fa-chart-simple"></i> JUnit, Postman, JMeter</span>
+                    </div>
+                    <div style="margin-top: 12px;"><span class="section-title" style="font-size: 1rem; border-left: none; margin-bottom: 6px;"><i class="fas fa-mobile-alt"></i> App Screens</span></div>
+                    <div class="screenshot-grid">
+                        <div class="image-card">
+                            <img src="output0.jpeg" alt="Home screen">
+                            <div class="image-caption">Home & onboarding screen</div>
+                        </div>
+                        <div class="image-card">
+                            <img src="output1.jpeg" alt="Chat screen">
+                            <div class="image-caption">Chat-based Ayurvedic remedy output</div>
+                        </div>
+                        <div class="image-card">
+                            <img src="output2.jpeg" alt="Profile settings">
+                            <div class="image-caption">Profile, dosha and reminder settings</div>
+                        </div>
+                    </div>
+                    <div class="text-sm" style="margin-top: 6px;">Real app UI shown above for guide, chat and profile experience.</div>
+                </div>
+
+                <div  style="display: flex ;  align-items: center;">
+                    <div class="section-card"  id="sys" >
+                    <div class="section-title"><i class="fas fa-project-diagram"></i> System Architecture</div>                    
+                    <p class="text-sm" style="line-height: 10px;" >The architecture captures the mobile app flow through the API gateway into auth, AI, chat, voice.</p>
+                    <p class="text-sm"  style="line-height: 10px;">User data is managed in PostgreSQL, knowledge assets in MongoDB, and fast state in Redis.</p>
+                      <div class="arch-diagram">
+                        <img src="System Architecture.png" alt="System architecture diagram">
+                        <div class="image-caption">System flow for API, auth, AI service, chat, voice, scheduler and data stores.</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full width row for conclusion + future scope (two items side by side inside one row) -->
+        <div class="two-columns" style="margin-bottom: 0.5rem;">
+            <div class="section-card">
+                <div class="section-title"><i class="fas fa-check-double"></i> Conclusion</div>
+                <p class="text-sm">Swasthya AI successfully integrates traditional Ayurvedic principles with AI, providing personalized, accessible healthcare via mobile. Achieved 89% dosha detection, RAG-based reliable remedies, multilingual voice, offline mode. All functional modules validated, meeting project objectives. Proven feasibility of combining ancient wisdom & modern AI for digital health.</p>
+            </div>
+            <div class="section-card">
+                <div class="section-title"><i class="fas fa-rocket"></i> Future Scope</div>
+                <ul class="bullet-list text-sm">
+                    <li><i class="fas fa-heartbeat"></i> Wearable device integration (real-time dosha tracking)</li>
+                    <li><i class="fas fa-language"></i> Expand to 10+ Indian languages, enhanced dialect support</li>
+                    <li><i class="fas fa-video"></i> AI-assisted video consultations with certified Vaidyas</li>
+                    <li><i class="fas fa-database"></i> Deeper integration of classical texts + clinical trials</li>
+                    <li><i class="fas fa-chart-line"></i> Predictive health analytics using longitudinal user data</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+        <!-- TEAM & GUIDE FOOTER -->
+        <div class="footer-team">
+            <div>
+                <div style="font-weight: 700; color: #1f4f2b;"><i class="fas fa-users"></i> Team Members</div>
+                <div class="team-names"  style="margin-top: 10px;">
+                    <span>Karan Chavan</span>  <span>Prathamesh Kadam</span>  <span>Gayatri Ingole</span>  <span>Hemani Raina</span>
+                </div>
+                <div style="margin-top: 10px; font-size: 0.8rem;"><i class="fas fa-chalkboard-user"></i> Project Guide: Prof. Pragati Malusare</div>
+                <div style="font-size: 0.7rem; color: #5b7a5a; margin-top: 10px;">Dept. of Computer Engineering | Indira College of Engg & Management, SPPU Pune</div>
+            </div>
+            <div style="text-align: right; ">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='50'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232c7a47'/%3E%3Cpath fill='white' d='M35 45 L65 45 L65 55 L35 55 Z M50 35 L50 65' stroke='white' stroke-width='4'/%3E%3C/svg%3E" style="width: 45px; opacity: 0.7;">
+                <div style="font-size: 0.65rem;">Ayurveda · AI for Wellness</div>
+            </div>
+        </div>
+        <div style="text-align: center; font-size: 0.65rem; color: #8ba888; margin-top: 16px;">© 2026 Swasthya AI | Academic Project Exhibition Stage-II</div>
+    </div>
+</div>
+
+</body>
+</html>
